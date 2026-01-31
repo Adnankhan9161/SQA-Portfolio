@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adnan Khan | Senior QA Architect Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root { --p-blue: #2563eb; --p-orange: #f97316; --p-slate: #0f172a; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #ffffff; color: #0f172a; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        .hero-pattern {
+            background-image: radial-gradient(#2563eb08 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+        }
+
+        .nav-blur { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        
+        .premium-card { transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); border: 1px solid #f1f5f9; }
+        .premium-card:hover { transform: translateY(-12px); box-shadow: 0 40px 60px -15px rgba(0,0,0,0.08); border-color: var(--p-blue); }
+
+        .tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="hero-pattern">
+
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50 nav-blur rounded-2xl px-8 py-4 flex justify-between items-center shadow-sm">
+        <div class="font-black text-xl tracking-tighter uppercase">M<span class="text-blue-600">.</span>ADNAN</div>
+        <div class="hidden md:flex gap-8 items-center text-xs font-bold uppercase tracking-widest text-slate-500">
+            <a href="#expertise" class="hover:text-blue-600 transition">Expertise</a>
+            <a href="#work" class="hover:text-blue-600 transition">Portfolio</a>
+            <a href="#packages" class="hover:text-blue-600 transition">Engagement</a>
+             <a href="mailto:adnan@example.com" class="bg-slate-900 text-white px-6 py-2.5 rounded-xl hover:bg-blue-600 transition shadow-lg shadow-slate-200">Consultation</a>
+        </div>
+    </nav>
+
+    <header class="pt-56 pb-24 px-10 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 tag mb-6 border border-blue-100">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span> Release Reliability
+                </div>
+                <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-8 gradient-text">
+                    Zero Friction <br>Quality Assurance
+                </h1>
+                <p class="text-slate-500 text-xl max-w-lg leading-relaxed mb-10">
+                    Senior QA & Delivery Lead | Scrum Master, Project Manager & Development Manager driving stable, scalable product releases</span>
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#work" class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold shadow-xl shadow-blue-100 hover:scale-105 transition">View Case Studies</a>
+                    <a href="https://wa.me/+923165405431?text=Hi%20Adnan,%20I%20reviewed%20your%20QA%20portfolio%20and%20would%20like%20to%20discuss%20QA%20testing%20support%20for%20my%20product." target="_blank" rel="noopener noreferrer" class="border border-slate-200 px-10 py-5 rounded-2xl font-bold hover:bg-slate-50 transition flex items-center gap-2">
+                        Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm">
+                    <div class="text-blue-600 text-4xl font-black mb-2">8+</div>
+                    <div class="tag text-slate-400">Years of QA Experience</div>
+                </div>
+                <div class="bg-slate-900 p-8 rounded-[2.5rem] text-white">
+                    <div class="text-orange-500 text-4xl font-black mb-2">100+</div>
+                    <div class="tag text-slate-400">Clients Served Worldwide</div>
+                </div>
+                <div class="col-span-2 bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm relative overflow-hidden group">
+                    <div class="relative z-10">
+                        <div class="tag text-blue-600 mb-4">Availability</div>
+                        <div class="text-2xl font-bold italic tracking-tight">UK & US Time Zone Coverage</div>
+                        <p class="text-slate-400 text-sm mt-2">Global Remote QA Leadership</p>
+                    </div>
+                    <div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform">
+                        <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="expertise" class="py-32 bg-slate-950 text-white rounded-[4rem] mx-4 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-10 relative z-10">
+            <div class="mb-20 max-w-2xl">
+                <h2 class="text-orange-500 font-black text-xs uppercase tracking-[0.4em] mb-4">Strategic Framework</h2>
+                <h3 class="text-5xl font-extrabold tracking-tight leading-tight italic">Engineered for Scale.</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-10 rounded-[3rem] bg-white/5 border border-white/10 hover:border-blue-500 transition-colors">
+                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-8">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Functional & Core</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">End-to-end functional validation including regression, smoke and sanity testing—ensuring critical workflows, business logic and releases remain stable under scale and pressure.</p>
+                </div>
+
+                <div class="p-10 rounded-[3rem] bg-white/5 border border-white/10 hover:border-blue-500 transition-colors">
+                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-8">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Platform-Specific</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Specialized testing for mobile apps (iOS & Android), cross-browser compatibility and high-complexity web applications built for global users and diverse environments.</p>
+                </div>
+
+                <div class="p-10 rounded-[3rem] bg-white/5 border border-white/10 hover:border-blue-500 transition-colors">
+                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-8">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">UX & Specialized</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Usability and UX-focused testing for SaaS dashboards and eCommerce platforms, optimized to reduce friction, improve conversion, and maximize user retention.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 grid md:grid-cols-2 gap-8">
+                <div class="p-12 rounded-[3.5rem] bg-blue-600 text-white relative group overflow-hidden">
+                    <h4 class="tag mb-8 text-white/80">Industries Worked In</h4>
+                    <div class="grid grid-cols-2 gap-y-6">
+                        <div class="font-bold border-l-2 border-white/20 pl-4">LegalTech & AI-Driven Court Systems</div>
+                        <div class="font-bold border-l-2 border-white/20 pl-4">Business Intelligence (BI) & Data-Driven Platforms</div>
+                        <div class="font-bold border-l-2 border-white/20 pl-4">Financial Technology & Trading Systems</div>
+                        <div class="font-bold border-l-2 border-white/20 pl-4">Food Ordering & Restaurant Systems</div>
+                        <div class="font-bold border-l-2 border-white/20 pl-4">Healthcare Technology</div>
+                        <div class="font-bold border-l-2 border-white/20 pl-4">SaaS Products & Dashboards</div>
+<div class="font-bold border-l-2 border-white/20 pl-4">E-commerce Solutions</div>
+                    </div>
+                </div>
+
+                <div class="p-12 rounded-[3.5rem] bg-white/5 border border-white/10">
+                    <h4 class="tag mb-8 text-blue-400">Tools & Tech Stack</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">Jira</span>
+                        <span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">ClickUp</span>
+<span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">GitHub</span>
+                        <span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">TestRail</span>
+<span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">Testmo</span>
+                        <span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">Postman (API Testing)</span>
+<span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">Apache JMeter (Performance Testing)</span>
+                        <span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">Chrome DevTools</span>
+                        <span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">SQL (Data & BI Validation)</span>
+<span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">Agile / Scrum / Kanban</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-32 max-w-7xl mx-auto px-10">
+        <div class="flex justify-between items-end mb-16">
+            <h2 class="text-6xl font-black tracking-tighter italic">Global Portfolio</h2>
+            <div class="text-right hidden md:block">
+                <p class="text-slate-400 font-bold mb-2 uppercase text-[10px] tracking-widest">Selected Works</p>
+                <div class="h-1 w-24 bg-blue-600 ml-auto rounded-full"></div>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="premium-card bg-white p-10 rounded-[3.5rem]">
+                <div class="flex justify-between mb-8">
+                    <span class="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase">Senior QA Engineer</span>
+                    <span class="text-slate-300 font-mono text-xs">US Market</span>
+                </div>
+                <h3 class="text-3xl font-extrabold mb-4 italic text-slate-800 tracking-tighter">LegalAtoms – Legal Services SaaS Platform</h3>
+                <p class="text-slate-500 mb-8 text-sm leading-relaxed">Led end-to-end QA for LegalAtoms.com, a US legal SaaS platform. Managed test strategy, regression, usability, and release validation. Helped deliver stable production releases and significantly reduced critical bugs through long-term testing engagement.</p>
+                <div class="flex gap-2"><span class="tag bg-slate-100 px-3 py-1 rounded">SAAS</span><span class="tag bg-slate-100 px-3 py-1 rounded">WEB APP</span><span class="tag bg-slate-100 px-3 py-1 rounded">LegalTech</span></div>
+            </div>
+
+            <div class="premium-card bg-slate-50 p-10 rounded-[3.5rem] border-blue-100 bg-gradient-to-br from-white to-blue-50">
+                <div class="flex justify-between mb-8">
+                    <span class="bg-orange-100 text-orange-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase">QA Lead & Development Manager</span>
+                    <span class="text-slate-300 font-mono text-xs">UK Market</span>
+                </div>
+                <h3 class="text-3xl font-extrabold mb-4 italic text-slate-800 tracking-tighter">5Loyalty – Loyalty-Based SaaS Platform for Restaurants & Cafes</h3>
+                <p class="text-slate-500 mb-8 text-sm leading-relaxed">Led QA strategy and coordinated development tasks for a SaaS loyalty platform. Managed QA teams, oversaw testing cycles, prioritized backlogs and ensured stable, high-quality releases across web and mobile apps.</p>
+                <div class="flex gap-2"><span class="tag bg-white border border-slate-200 px-3 py-1 rounded">Web app</span><span class="tag bg-white border border-slate-200 px-3 py-1 rounded">saas</span><span class="tag bg-white border border-slate-200 px-3 py-1 rounded">Mobile app</span></div>
+            </div>
+
+            <div class="premium-card bg-white p-10 rounded-[3.5rem]">
+                <div class="flex justify-between mb-8"> 
+                    <span class="bg-emerald-50 text-emerald-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase">QA Engineer – BI & Analytics</span>
+                    <span class="text-slate-300 font-mono text-xs">UK & US markets</span>
+                </div>
+                <h3 class="text-3xl font-extrabold mb-4 italic text-slate-800 tracking-tighter">Business Intelligence & Data Analytics – QA Testing</h3>
+                <p class="text-slate-500 mb-8 text-sm leading-relaxed">Delivered QA services for enterprise BI and analytics platforms across multiple freelance projects. Tested Power BI and Metabase dashboards, validated ETL pipelines, KPIs and data accuracy to ensure reliable analytics and decision-ready insights for business teams.</p>
+                <div class="flex gap-2"><span class="tag bg-slate-100 px-3 py-1 rounded">BI Testing</span><span class="tag bg-slate-100 px-3 py-1 rounded">Data Analytics</span><span class="tag bg-slate-100 px-3 py-1 rounded">SaaS QA</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="py-24 px-10 bg-slate-950 rounded-[4rem] mx-4 text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h3 class="text-5xl font-black mb-4 italic">Engagement Models</h3>
+                <p class="text-slate-400">Flexible options tailored for high-growth startups.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                <div class="bg-white/5 p-12 flex flex-col rounded-[3.5rem] border border-white/10 hover:border-blue-500 transition shadow-sm">
+                    <div class="tag text-blue-400 mb-4">DAILY</div>
+                    <div class="text-5xl font-black mb-10">Quick QA Support<br><span class="text-sm font-normal opacity-50">Lightweight, fast-turnaround testing</span></div>
+                    <ul class="text-xs space-y-4 mb-10 opacity-70">
+                        <li class="flex gap-3 text-sm"><span>✔</span> Smoke & Sanity Testing</li>
+                        <li class="flex gap-3 text-sm"><span>✔</span> UI & Functional Coverage</li>
+                        <li class="flex gap-3 text-sm"><span>✔</span> Bug Verification & Retesting</li>
+<li class="flex gap-3 text-sm"><span>✔</span> Rapid Feedback Cycles</li>
+<li class="flex gap-3 text-sm">Best for: Short tasks, hotfixes, urgent releases</li>
+                    </ul>
+                    <a href="mailto:testingpro74@gmail.com" class="block text-center py-5 bg-white text-slate-900 rounded-2xl tag hover:bg-blue-400 hover:text-white transition mt-auto">Inquire Now</a>
+                </div>
+
+                <div class="bg-blue-600 p-12 flex flex-col rounded-[3.5rem] shadow-2xl shadow-blue-500/20 scale-105 z-10 border border-blue-400">
+                    <div class="tag text-white/80 mb-4">Monthly</div>
+                    <div class="text-5xl font-black mb-10">Preferred by SaaS teams<span class="text-sm font-normal opacity-80"> Recommended (Most Popular)</span></div>
+                    <ul class="text-xs space-y-4 mb-10">
+                        <li class="flex gap-3 text-sm"><span>✔</span> Full Regression Suite</li>
+                        <li class="flex gap-3 text-sm"><span>✔</span> API & Mobile Coverage</li>
+                        <li class="flex gap-3 text-sm"><span>✔</span> Test Case Documentation</li>
+                        <li class="flex gap-3 text-sm"><span>✔</span> Performance Bottlenecks</li>
+<li class="flex gap-3 text-sm">Best for: Ongoing SaaS & Product QA</li>
+                    </ul>
+                    <a href="mailto:testingpro74@gmail.com" class="block text-center py-5 bg-white text-blue-600 rounded-2xl tag font-bold shadow-xl">Inquire Now</a>
+                </div>
+
+                <div class="bg-white/5 p-12 flex flex-col rounded-[3.5rem] border border-white/10 hover:border-orange-500 transition shadow-sm">
+                    <div class="tag text-orange-400 mb-4">WEEKLY</div>
+                    <div class="text-5xl font-black mb-10">Flexible QA Coverage<br><span class="text-sm font-normal opacity-50">Balanced support for active sprints</span></div>
+                    <ul class="text-xs space-y-4 mb-10 opacity-70">
+                        <li class="flex gap-3 text-sm"><span>✔</span> Functional & Regression Testing</li>
+                        <li class="flex gap-3 text-sm"><span>✔</span> API & Mobile Coverage</li>
+                        <li class="flex gap-3 text-sm"><span>✔</span> Test Case Updates</li>
+                        <li class="flex gap-3 text-sm"><span>✔</span> Sprint-Level QA Support</li>
+                    </ul>
+                    <a href="mailto:testingpro74@gmail.com" class="block text-center py-5 border border-white/20 rounded-2xl tag hover:bg-white hover:text-slate-900 transition mt-auto">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 text-center">
+        <h2 class="text-sm font-black text-slate-400 uppercase tracking-[0.5em] mb-10 italic">M Adnan | QA Engineering</h2>
+        <div class="flex justify-center gap-10 text-xs font-black uppercase tracking-widest mb-10">
+            <a href="https://www.linkedin.com/in/adkhan9161/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition">LinkedIn</a>
+            <a href="https://www.fiverr.com/testingpro1/do-perfect-website-and-mobile-applications-qa-testing" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition">Fiverr</a>
+            <a href="mailto:testingpro74@gmail.com" class="hover:text-blue-600 transition">Email</a>
+        </div>
+        <p class="text-[10px] text-slate-300">© 2026 M Adnan. Quality Assurance Services.</p>
+    </footer>
+
+</body>
+</html>
