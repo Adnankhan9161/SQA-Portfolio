@@ -1,253 +1,1342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adnan Khan | Senior QA Architect Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
-    <style>
-        :root { --p-blue: #2563eb; --p-orange: #f97316; --p-slate: #0f172a; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #ffffff; color: #0f172a; overflow-x: hidden; scroll-behavior: smooth; }
-        
-        .hero-pattern {
-            background-image: radial-gradient(#2563eb08 1.5px, transparent 1.5px);
-            background-size: 30px 30px;
-        }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>M. Adnan | Senior QA Architect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Nunito+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ─── RESET ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
 
-        .nav-blur { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        
-        .premium-card { transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); border: 1px solid #f1f5f9; }
-        .premium-card:hover { transform: translateY(-12px); box-shadow: 0 40px 60px -15px rgba(0,0,0,0.08); border-color: var(--p-blue); }
+/* ─── TOKENS ─────────────────────────────── */
+:root {
+  --char:       #1a1a1a;
+  --char-mid:   #222222;
+  --char-light: #2e2e2e;
+  --amber:      #e8a020;
+  --amber-dim:  #c8871a;
+  --amber-pale: rgba(232,160,32,0.12);
+  --cream:      #f9f5ef;
+  --warm-white: #fffdf9;
+  --muted:      #8a8070;
+  --muted-lt:   #b5ab9e;
+  --card:       #252525;
+  --border:     rgba(232,160,32,0.18);
+  --radius:     14px;
+  --ease:       0.36s cubic-bezier(.4,0,.2,1);
+}
 
-        .tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
+/* ─── BASE ─────────────────────────────── */
+body {
+  background: var(--char);
+  color: var(--cream);
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* Headings: always provide enough line-height + padding so
+   descenders on g, p, y, q are NEVER clipped by overflow:hidden
+   or tight containers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.22;
+  padding-bottom: 0.08em;   /* key fix: room for descenders */
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* Ambient background glow */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 80% 5%,  rgba(232,160,32,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 5%  90%, rgba(200,135,26,0.05) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── NAV ─────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6%;
+  height: 70px;
+  background: rgba(26,26,26,0.9);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.22rem;
+  color: var(--warm-white);
+  display: flex; align-items: center; gap: 10px;
+  /* extra vertical space so logo text isn't clipped */
+  padding: 6px 0;
+}
+.nav-logo .badge {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.68rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--amber); color: var(--char);
+  padding: 4px 10px; border-radius: 4px;
+  line-height: 1.5;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex; align-items: center; gap: 36px;
+}
+.nav-links a {
+  font-size: 0.875rem; font-weight: 500;
+  color: var(--muted-lt); letter-spacing: 0.02em;
+  transition: color var(--ease);
+  padding: 6px 0; display: inline-block; /* room for text */
+}
+.nav-links a:hover { color: var(--amber); }
+
+.nav-cta {
+  background: var(--amber) !important;
+  color: var(--char) !important;
+  padding: 9px 24px !important; border-radius: 50px;
+  font-weight: 800 !important; font-size: 0.84rem !important;
+  transition: background var(--ease), transform var(--ease) !important;
+  line-height: 1.5;
+}
+.nav-cta:hover { background: var(--amber-dim) !important; transform: translateY(-1px); }
+
+/* Burger */
+.burger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 6px;
+}
+.burger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--cream); border-radius: 2px;
+  transition: var(--ease);
+}
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mob-menu {
+  display: none; position: fixed;
+  top: 70px; left: 0; right: 0;
+  background: var(--char-mid);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 6%; z-index: 190;
+  flex-direction: column;
+}
+.mob-menu.open { display: flex; }
+.mob-menu a {
+  font-size: 1rem; font-weight: 500; color: var(--muted-lt);
+  /* generous padding so text like "g" is never cut */
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(232,160,32,0.1);
+  transition: color var(--ease); display: block;
+}
+.mob-menu a:last-child { border-bottom: none; }
+.mob-menu a:hover { color: var(--amber); }
+
+/* ─── HERO ─────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  /* top padding > nav height; bottom padding prevents content flush */
+  padding: 130px 6% 100px;
+  overflow: hidden;
+}
+
+.hero-dots {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(232,160,32,0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 0%, transparent 100%);
+}
+
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 70px; align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 0.78rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 26px;
+  padding: 4px 0; /* prevent label text clip */
+}
+.eyebrow::before {
+  content: '';
+  display: block; width: 36px; height: 2px;
+  background: var(--amber); border-radius: 2px; flex-shrink: 0;
+}
+
+/* CRITICAL: hero h1 has generous line-height AND padding-bottom
+   so "Q" descender and "g" bottom never disappear */
+.hero h1 {
+  font-size: clamp(2.6rem, 5vw, 4.3rem);
+  font-weight: 900;
+  line-height: 1.18;
+  padding-bottom: 0.12em;
+  margin-bottom: 20px;
+  color: var(--warm-white);
+}
+.hero h1 .hl { color: var(--amber); }
+
+.hero-desc {
+  font-size: clamp(0.92rem, 1.4vw, 1.04rem);
+  color: var(--muted-lt);
+  max-width: 520px; font-weight: 300;
+  line-height: 1.9; margin-bottom: 40px;
+}
+
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.btn-fill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--amber); color: var(--char);
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 800; font-size: 0.92rem;
+  padding: 14px 30px; border-radius: 50px;
+  transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+  line-height: 1.5;
+}
+.btn-fill:hover {
+  background: var(--amber-dim); transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(232,160,32,0.28);
+}
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--cream);
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 700; font-size: 0.92rem;
+  padding: 13px 30px; border-radius: 50px;
+  border: 1.5px solid rgba(249,245,239,0.22);
+  transition: border-color var(--ease), color var(--ease), transform var(--ease);
+  line-height: 1.5;
+}
+.btn-ghost:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
+
+/* Stat cards */
+.hero-side { display: flex; flex-direction: column; gap: 16px; }
+
+.stat-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 30px; text-align: center;
+  min-width: 150px; position: relative; overflow: visible;
+  transition: border-color var(--ease), transform var(--ease);
+}
+.stat-box::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--amber), transparent);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.stat-box:hover { border-color: var(--amber); transform: translateY(-3px); }
+
+/* stat numbers: Playfair has descenders on some glyphs;
+   line-height + overflow visible keeps them safe */
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem; font-weight: 900;
+  color: var(--amber);
+  line-height: 1.2; padding-bottom: 0.05em;
+}
+.stat-lbl {
+  font-size: 0.72rem; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.07em;
+  margin-top: 6px; line-height: 1.5;
+}
+
+.avail-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.avail-dot {
+  width: 10px; height: 10px;
+  background: #4ade80; border-radius: 50%; flex-shrink: 0;
+  animation: blink 2.2s infinite;
+}
+@keyframes blink {
+  0%,100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+  50%      { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+}
+.avail-text { font-size: 0.75rem; color: var(--muted-lt); line-height: 1.55; }
+.avail-text strong { color: var(--warm-white); display: block; font-size: 0.82rem; }
+
+/* ─── SHARED ─────────────────────────────── */
+section { position: relative; z-index: 1; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 96px 6%; }
+
+.sec-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.75rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 14px;
+  padding: 4px 0; /* never clip label glyphs */
+}
+.sec-label::before {
+  content: '';
+  display: block; width: 22px; height: 2px;
+  background: var(--amber); border-radius: 2px;
+}
+
+/* Section heading: padding-bottom is the descender fix */
+.sec-title {
+  font-size: clamp(1.9rem, 3.5vw, 2.85rem);
+  font-weight: 900; color: var(--warm-white);
+  padding-bottom: 0.1em;
+  margin-bottom: 12px;
+}
+
+.sec-desc {
+  font-size: 0.97rem; color: var(--muted-lt);
+  font-weight: 300; line-height: 1.9;
+  max-width: 500px; margin-bottom: 52px;
+}
+
+/* ─── EXPERTISE ─────────────────────────────── */
+#expertise { background: var(--char-mid); }
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px; margin-bottom: 24px;
+}
+
+.exp-card {
+  background: var(--char);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  position: relative; overflow: hidden;
+  transition: border-color var(--ease), transform var(--ease);
+}
+.exp-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--amber);
+  transition: width var(--ease);
+}
+.exp-card:hover { border-color: rgba(232,160,32,0.4); transform: translateY(-4px); }
+.exp-card:hover::after { width: 100%; }
+
+.exp-icon {
+  width: 46px; height: 46px;
+  background: var(--amber-pale);
+  border: 1px solid rgba(232,160,32,0.25);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 20px;
+}
+
+/* card headings: always allow descenders to breathe */
+.exp-card h3 {
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--warm-white);
+  padding-bottom: 0.06em; margin-bottom: 10px;
+}
+.exp-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.82; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+
+.info-block {
+  background: var(--char);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 28px;
+}
+.info-block h3 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.74rem; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 20px;
+  padding-bottom: 0; /* Nunito descenders fine here */
+}
+
+.ind-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.ind-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.875rem; color: var(--muted-lt); line-height: 1.55;
+}
+.ind-list li::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--amber); border-radius: 50%;
+  flex-shrink: 0; margin-top: 0.45em;
+}
+
+.tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  background: var(--amber-pale);
+  border: 1px solid rgba(232,160,32,0.22);
+  color: var(--amber);
+  font-size: 0.8rem; font-weight: 600;
+  /* line-height + padding prevents tag text clip */
+  padding: 6px 14px; border-radius: 50px;
+  line-height: 1.5;
+  transition: background var(--ease), transform var(--ease);
+}
+.tag:hover { background: rgba(232,160,32,0.22); transform: translateY(-1px); }
+
+/* ─── PORTFOLIO CAROUSEL ─────────────────────────────── */
+#work { background: var(--char); }
+
+/* ── Header row ── */
+.portfolio-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px; margin-bottom: 44px;
+}
+.portfolio-header-left .sec-desc { margin-bottom: 0; }
+
+.carousel-controls {
+  display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+}
+.car-arrow {
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  color: var(--cream);
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background var(--ease), border-color var(--ease),
+              color var(--ease), transform var(--ease);
+  user-select: none; flex-shrink: 0;
+}
+.car-arrow:hover:not(:disabled) {
+  background: var(--amber); border-color: var(--amber);
+  color: var(--char); transform: scale(1.08);
+}
+.car-arrow:disabled { opacity: 0.28; cursor: not-allowed; }
+
+.car-counter {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.82rem; font-weight: 700;
+  color: var(--muted); letter-spacing: 0.06em;
+  min-width: 46px; text-align: center;
+}
+.car-counter span { color: var(--amber); }
+
+/* ── Viewport: shows exactly ONE card, hides the rest ── */
+.proj-carousel-wrap {
+  position: relative;
+  overflow: hidden;           /* hard clip — no peeking */
+  border-radius: 20px;
+}
+
+/* ── Sliding track ── */
+.proj-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+}
+
+/* ── Each card: full viewport width of the wrap ── */
+.proj-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 48px 52px;
+  /* KEY: exactly 100% of the clipping wrapper */
+  flex: 0 0 100%;
+  width: 100%;
+  min-height: 340px;
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 36px; align-items: start;
+  position: relative; overflow: hidden;
+  box-sizing: border-box;
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+.proj-card::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(232,160,32,0.06) 0%, transparent 70%);
+  border-radius: 50%; pointer-events: none;
+}
+.proj-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--amber), transparent 70%);
+  border-radius: 18px 18px 0 0;
+}
+
+/* ── Card internals ── */
+.proj-card-top { display: contents; }
+
+.proj-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem; font-weight: 900;
+  color: rgba(232,160,32,0.16);
+  line-height: 1.1; padding-bottom: 0.04em;
+  overflow: visible; user-select: none;
+}
+.proj-body { display: flex; flex-direction: column; gap: 14px; }
+
+.proj-role {
+  font-size: 0.74rem; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--amber); line-height: 1.5;
+}
+.mkt-badge {
+  display: inline-flex; align-items: center;
+  background: rgba(249,245,239,0.06);
+  border: 1px solid rgba(249,245,239,0.14);
+  color: var(--muted-lt);
+  font-size: 0.72rem; font-weight: 600;
+  padding: 5px 14px; border-radius: 50px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  align-self: flex-start; line-height: 1.5;
+}
+.proj-card h3 {
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 700; color: var(--warm-white);
+  padding-bottom: 0.06em; line-height: 1.28;
+}
+.proj-card p {
+  font-size: 0.92rem; color: var(--muted);
+  line-height: 1.85; max-width: 680px;
+}
+.proj-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 6px;
+}
+.ptag {
+  background: var(--amber-pale);
+  border: 1px solid rgba(232,160,32,0.22);
+  color: var(--amber);
+  font-size: 0.74rem; font-weight: 600;
+  padding: 5px 13px; border-radius: 50px; line-height: 1.5;
+}
+
+/* ── Dot indicators ── */
+.proj-dots {
+  display: flex; justify-content: center;
+  gap: 8px; margin-top: 28px;
+}
+.proj-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(232,160,32,0.22);
+  border: none; padding: 0; cursor: pointer;
+  transition: background var(--ease), width 0.3s ease;
+}
+.proj-dot.active { background: var(--amber); width: 24px; border-radius: 4px; }
+
+/* ── Swipe hint on mobile ── */
+.swipe-hint {
+  display: none;
+  text-align: center;
+  font-size: 0.72rem; color: var(--muted);
+  margin-top: 14px; letter-spacing: 0.06em;
+}
+@media (max-width: 800px) { .swipe-hint { display: block; } }
+
+/* ─── PACKAGES ─────────────────────────────── */
+#packages { background: var(--char-mid); }
+
+.pkg-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 22px; align-items: start;
+}
+
+.pkg-card {
+  background: var(--char);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  /* extra bottom padding so no content touches edge */
+  padding: 38px 30px 34px;
+  display: flex; flex-direction: column; gap: 22px;
+  position: relative;
+  transition: border-color var(--ease), transform var(--ease);
+}
+.pkg-card.popular {
+  border-color: var(--amber);
+  background: linear-gradient(155deg, rgba(232,160,32,0.07) 0%, var(--char) 55%);
+}
+.pkg-card:not(.popular):hover { border-color: rgba(232,160,32,0.32); transform: translateY(-4px); }
+.pkg-card.popular { transform: scale(1.025); }
+.pkg-card.popular:hover { transform: scale(1.025) translateY(-4px); }
+
+.pop-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--amber); color: var(--char);
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.68rem; font-weight: 800;
+  padding: 5px 16px; border-radius: 50px;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  white-space: nowrap; line-height: 1.6;
+}
+
+.pkg-freq {
+  font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--amber); padding: 3px 0;
+}
+.pkg-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; font-weight: 900;
+  color: var(--warm-white);
+  /* descender fix for package name text */
+  line-height: 1.2; padding-bottom: 0.08em;
+}
+.pkg-tag { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+
+.pkg-feats {
+  list-style: none; display: flex; flex-direction: column; gap: 12px;
+  flex: 1;
+}
+.pkg-feats li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.875rem; color: var(--muted-lt); line-height: 1.6;
+}
+.pkg-feats li .ck { color: var(--amber); font-size: 0.9rem; flex-shrink: 0; margin-top: 2px; }
+
+.pkg-note {
+  font-size: 0.8rem; color: var(--muted);
+  padding-top: 14px;
+  border-top: 1px solid rgba(232,160,32,0.12);
+  font-style: italic; line-height: 1.6;
+}
+.pkg-note strong { color: var(--amber); }
+
+.pkg-btn {
+  display: block; text-align: center;
+  padding: 13px 18px; border-radius: 50px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 700; font-size: 0.88rem;
+  transition: all var(--ease); line-height: 1.5;
+}
+.pkg-btn-o {
+  border: 1.5px solid rgba(232,160,32,0.3); color: var(--muted-lt);
+}
+.pkg-btn-o:hover { border-color: var(--amber); color: var(--amber); }
+.pkg-btn-f { background: var(--amber); color: var(--char); }
+.pkg-btn-f:hover { background: var(--amber-dim); transform: translateY(-2px); }
+
+/* ─── CONTACT ─────────────────────────────── */
+#contact { background: var(--char); }
+
+.contact-wrap {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: 60px; align-items: start;
+}
+
+.cinfo { display: flex; flex-direction: column; gap: 28px; }
+.cinfo p {
+  font-size: 0.95rem; color: var(--muted-lt);
+  line-height: 1.9; font-weight: 300;
+}
+
+.clinks { display: flex; flex-direction: column; gap: 14px; }
+.clink {
+  display: flex; align-items: center; gap: 14px;
+  color: var(--muted-lt); font-size: 0.9rem;
+  transition: color var(--ease); padding: 4px 0;
+}
+.clink:hover { color: var(--amber); }
+.clink-icon {
+  width: 38px; height: 38px; flex-shrink: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.9rem;
+  transition: border-color var(--ease);
+}
+.clink:hover .clink-icon { border-color: var(--amber); }
+
+.tz-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px 22px;
+}
+.tz-label {
+  font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 8px;
+}
+.tz-val { font-size: 0.9rem; color: var(--muted-lt); line-height: 1.6; }
+
+/* Form */
+.cform {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px; padding: 38px;
+}
+
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+
+.fg { display: flex; flex-direction: column; gap: 0; }
+
+.fg label {
+  display: block;
+  font-size: 0.74rem; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted-lt);
+  margin-bottom: 8px;
+}
+
+/* Inputs: padding-top + padding-bottom both generous so
+   no text character is cut by the input border or container */
+.fg input,
+.fg textarea,
+.fg select {
+  background: var(--char-light);
+  border: 1px solid rgba(232,160,32,0.15);
+  border-radius: 10px;
+  color: var(--cream);
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.9rem;
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color var(--ease);
+  width: 100%; resize: none;
+  line-height: 1.65;
+}
+.fg input::placeholder, .fg textarea::placeholder { color: var(--muted); }
+.fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--amber); }
+.fg select { cursor: pointer; appearance: none; }
+.fg select option { background: var(--char-mid); }
+
+.fsub {
+  background: var(--amber); color: var(--char);
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 800; font-size: 0.95rem;
+  border: none; border-radius: 50px;
+  padding: 16px; cursor: pointer;
+  transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+  width: 100%; letter-spacing: 0.02em; line-height: 1.5;
+}
+.fsub:hover {
+  background: var(--amber-dim); transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(232,160,32,0.3);
+}
+
+/* ─── FOOTER ─────────────────────────────── */
+footer {
+  background: var(--char-mid);
+  border-top: 1px solid var(--border);
+  padding: 20px 6%;
+}
+.foot-in {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 18px;
+}
+.foot-copy { font-size: 0.82rem; color: var(--muted); }
+.foot-links { display: flex; gap: 26px; }
+.foot-links a {
+  font-size: 0.82rem; color: var(--muted);
+  transition: color var(--ease);
+  padding: 4px 0; display: inline-block;
+}
+.foot-links a:hover { color: var(--amber); }
+
+/* ─── SCROLL REVEAL ─────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(26px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ─── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 1060px) {
+  .pkg-grid { grid-template-columns: 1fr 1fr; }
+  .pkg-card.popular { transform: none; }
+  .pkg-card.popular:hover { transform: translateY(-4px); }
+  .hero-inner { grid-template-columns: 1fr; gap: 44px; }
+  .hero-side { flex-direction: row; flex-wrap: wrap; gap: 14px; }
+  .proj-card { padding: 40px 38px; gap: 28px; }
+}
+
+@media (max-width: 800px) {
+  .nav-links { display: none; }
+  .burger { display: flex; }
+  .pkg-grid { grid-template-columns: 1fr; }
+  .pkg-card.popular { transform: none; }
+  .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+  .two-col { grid-template-columns: 1fr; }
+  .frow { grid-template-columns: 1fr; }
+  .wrap { padding: 72px 5%; }
+  .proj-card {
+    grid-template-columns: 1fr;
+    padding: 32px 28px; gap: 16px;
+  }
+  .proj-num { font-size: 2.6rem; }
+  .portfolio-header { flex-direction: column; align-items: flex-start; }
+  .carousel-controls { align-self: flex-end; }
+}
+
+@media (max-width: 520px) {
+  .hero { padding: 106px 5% 72px; }
+  .hero h1 { font-size: 2.3rem; }
+  .hero-btns { flex-direction: column; }
+  .btn-fill, .btn-ghost { text-align: center; justify-content: center; }
+  .cform { padding: 26px 20px; }
+  .foot-in { flex-direction: column; align-items: flex-start; }
+  .hero-side { flex-direction: column; }
+  .proj-card { padding: 26px 22px; }
+  .proj-num  { font-size: 2rem; }
+  .car-arrow { width: 42px; height: 42px; font-size: 1rem; }
+  .proj-card h3 { font-size: 1.05rem; }
+}
+</style>
 </head>
-<body class="hero-pattern">
+<body>
 
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50 nav-blur rounded-2xl px-8 py-4 flex justify-between items-center shadow-sm">
-        <div class="font-black text-xl tracking-tighter uppercase">M<span class="text-blue-600">.</span>ADNAN</div>
-        <div class="hidden md:flex gap-8 items-center text-xs font-bold uppercase tracking-widest text-slate-500">
-            <a href="#expertise" class="hover:text-blue-600 transition">Expertise</a>
-            <a href="#work" class="hover:text-blue-600 transition">Portfolio</a>
-            <a href="#packages" class="hover:text-blue-600 transition">Engagement</a>
-             <a href="mailto:adnan@example.com" class="bg-slate-900 text-white px-6 py-2.5 rounded-xl hover:bg-blue-600 transition shadow-lg shadow-slate-200">Consultation</a>
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">M.Adnan <span class="badge">Senior QA Engineer</span></div>
+  <ul class="nav-links">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#work">Portfolio</a></li>
+    <li><a href="#packages">Engagement</a></li>
+    <li><a href="#contact" class="nav-cta">Inquire Now</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#expertise" onclick="closeMob()">Expertise</a>
+  <a href="#work"      onclick="closeMob()">Portfolio</a>
+  <a href="#packages"  onclick="closeMob()">Engagement Models</a>
+  <a href="#contact"   onclick="closeMob()">Inquire Now</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow">Release Reliability</div>
+      <h1>Zero Friction<br><span class="hl">Quality Assurance</span></h1>
+      <p class="hero-desc">Senior QA &amp; Delivery Lead · Scrum Master · Project &amp; Development Manager — driving stable, scalable product releases across global markets.</p>
+      <div class="hero-btns">
+        <a href="#work"    class="btn-fill">View Case Studies ↓</a>
+        <a href="#contact" class="btn-ghost">Request Details</a>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="stat-box">
+        <div class="stat-num">8+</div>
+        <div class="stat-lbl">Years of QA Experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">LONG-TERM</div>
+        <div class="stat-lbl">client partnerships</div>
+      </div>
+      <div class="avail-box">
+        <div class="avail-dot"></div>
+        <div class="avail-text">
+          <strong>Available</strong>
+          UK &amp; US Timezone Coverage
         </div>
-    </nav>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <header class="pt-56 pb-24 px-10 max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 tag mb-6 border border-blue-100">
-                    <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span> Release Reliability
-                </div>
-                <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-8 gradient-text">
-                    Zero Friction <br>Quality Assurance
-                </h1>
-                <p class="text-slate-500 text-xl max-w-lg leading-relaxed mb-10">
-                    Senior QA & Delivery Lead | Scrum Master, Project Manager & Development Manager driving stable, scalable product releases</span>
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#work" class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold shadow-xl shadow-blue-100 hover:scale-105 transition">View Case Studies</a>
-                    <a href="https://wa.me/+923165405431?text=Hi%20Adnan,%20I%20reviewed%20your%20QA%20portfolio%20and%20would%20like%20to%20discuss%20QA%20testing%20support%20for%20my%20product." target="_blank" rel="noopener noreferrer" class="border border-slate-200 px-10 py-5 rounded-2xl font-bold hover:bg-slate-50 transition flex items-center gap-2">
-                        Chat on WhatsApp
-                    </a>
-                </div>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm">
-                    <div class="text-blue-600 text-4xl font-black mb-2">8+</div>
-                    <div class="tag text-slate-400">Years of QA Experience</div>
-                </div>
-                <div class="bg-slate-900 p-8 rounded-[2.5rem] text-white">
-                    <div class="text-orange-500 text-4xl font-black mb-2">100+</div>
-                    <div class="tag text-slate-400">Clients Served Worldwide</div>
-                </div>
-                <div class="col-span-2 bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm relative overflow-hidden group">
-                    <div class="relative z-10">
-                        <div class="tag text-blue-600 mb-4">Availability</div>
-                        <div class="text-2xl font-bold italic tracking-tight">UK & US Time Zone Coverage</div>
-                        <p class="text-slate-400 text-sm mt-2">Global Remote QA Leadership</p>
-                    </div>
-                    <div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform">
-                        <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                    </div>
-                </div>
-            </div>
+<!-- ─── EXPERTISE ─── -->
+<section id="expertise">
+  <div class="wrap">
+    <div class="sec-label">Strategic Framework</div>
+    <h2 class="sec-title">Engineered for Scale.</h2>
+    <p class="sec-desc">A systematic approach to quality that adapts to your product, team and release cadence.</p>
+
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <div class="exp-icon">🔍</div>
+        <h3>Functional and Core Testing</h3>
+        <p>End-to-end functional validation including regression, smoke and sanity testing — ensuring critical workflows, business logic and releases remain stable under scale and pressure.</p>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-icon">📱</div>
+        <h3>Platform-Specific Testing</h3>
+        <p>Specialized testing for mobile apps (iOS &amp; Android), cross-browser compatibility and high-complexity web applications built for global users and diverse environments.</p>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-icon">✨</div>
+        <h3>UX and Specialized Testing</h3>
+        <p>Usability and UX-focused testing for AI-powered SaaS platforms and web applications — optimized to reduce friction, improve conversion and maximize user retention.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="info-block reveal">
+        <h3>Industries Worked In</h3>
+        <ul class="ind-list">
+          <li>LegalTech &amp; AI-Driven Court Systems</li>
+          <li>Business Intelligence (BI) &amp; Data-Driven Platforms</li>
+          <li>AI & ML-Based Financial Systems</li>
+          <li>Food Ordering &amp; Restaurant Systems</li>
+          <li>AI-Powered Trading Systems</li>
+          <li>SaaS Products &amp; Dashboards</li>
+          <li>E-commerce Solutions</li>
+        </ul>
+      </div>
+      <div class="info-block reveal">
+        <h3>Tools &amp; Tech Stack</h3>
+        <div class="tools">
+          <span class="tag">Jira</span>
+          <span class="tag">ClickUp</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">TestRail</span>
+          <span class="tag">Testmo</span>
+          <span class="tag">Postman</span>
+          <span class="tag">Apache JMeter</span>
+          <span class="tag">Chrome DevTools</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Agile / Scrum</span>
+          <span class="tag">Kanban</span>
+ <span class="tag">chatGPT</span>
+<span class="tag">ClaudeAI</span>
+<span class="tag">Prompt Testing for AI Systems</span>
+<span class="tag">Bruno API Client</span>
         </div>
-    </header>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="expertise" class="py-32 bg-slate-950 text-white rounded-[4rem] mx-4 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-10 relative z-10">
-            <div class="mb-20 max-w-2xl">
-                <h2 class="text-orange-500 font-black text-xs uppercase tracking-[0.4em] mb-4">Strategic Framework</h2>
-                <h3 class="text-5xl font-extrabold tracking-tight leading-tight italic">Engineered for Scale.</h3>
+<!-- ─── PORTFOLIO ─── -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-label">Global Portfolio</div>
+    <h2 class="sec-title">Selected Works</h2>
+
+    <div class="portfolio-header">
+      <div class="portfolio-header-left">
+        <p class="sec-desc">Delivering measurable quality impact across diverse SaaS platforms.</p>
+      </div>
+      <div class="carousel-controls">
+        <button class="car-arrow" id="carPrev" aria-label="Previous project">&#8592;</button>
+        <div class="car-counter"><span id="carCurrent">1</span> / <span id="carTotal">3</span></div>
+        <button class="car-arrow" id="carNext" aria-label="Next project">&#8594;</button>
+      </div>
+    </div>
+
+    <div class="proj-carousel-wrap">
+      <div class="proj-track" id="projTrack">
+
+        <div class="proj-card reveal">
+          <div class="proj-card-top">
+            <div class="proj-num">01</div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-role">Senior QA Engineer</div>
+            <span class="mkt-badge">US Market</span>
+            <h3>LegalAtoms – Legal Services SaaS Platform</h3>
+            <p>Led end-to-end QA for LegalAtoms.com, a US legal SaaS platform. Managed test strategy, regression, usability, and release validation. Helped deliver stable production releases and significantly reduced critical bugs through long-term testing engagement.</p>
+            <div class="proj-tags">
+              <span class="ptag">SaaS</span>
+              <span class="ptag">Web Application</span>
+              <span class="ptag">LegalTech</span>
+              <span class="ptag">Prompt-Based Testing</span>
+              <span class="ptag">AI Workflow Testing</span>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-10 rounded-[3rem] bg-white/5 border border-white/10 hover:border-blue-500 transition-colors">
-                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-8">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4">Functional & Core</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed">End-to-end functional validation including regression, smoke and sanity testing—ensuring critical workflows, business logic and releases remain stable under scale and pressure.</p>
-                </div>
-
-                <div class="p-10 rounded-[3rem] bg-white/5 border border-white/10 hover:border-blue-500 transition-colors">
-                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-8">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4">Platform-Specific</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed">Specialized testing for mobile apps (iOS & Android), cross-browser compatibility and high-complexity web applications built for global users and diverse environments.</p>
-                </div>
-
-                <div class="p-10 rounded-[3rem] bg-white/5 border border-white/10 hover:border-blue-500 transition-colors">
-                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-8">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4">UX & Specialized</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed">Usability and UX-focused testing for SaaS dashboards and eCommerce platforms, optimized to reduce friction, improve conversion, and maximize user retention.</p>
-                </div>
-            </div>
-
-            <div class="mt-12 grid md:grid-cols-2 gap-8">
-                <div class="p-12 rounded-[3.5rem] bg-blue-600 text-white relative group overflow-hidden">
-                    <h4 class="tag mb-8 text-white/80">Industries Worked In</h4>
-                    <div class="grid grid-cols-2 gap-y-6">
-                        <div class="font-bold border-l-2 border-white/20 pl-4">LegalTech & AI-Driven Court Systems</div>
-                        <div class="font-bold border-l-2 border-white/20 pl-4">Business Intelligence (BI) & Data-Driven Platforms</div>
-                        <div class="font-bold border-l-2 border-white/20 pl-4">Financial Technology & Trading Systems</div>
-                        <div class="font-bold border-l-2 border-white/20 pl-4">Food Ordering & Restaurant Systems</div>
-                        <div class="font-bold border-l-2 border-white/20 pl-4">Healthcare Technology</div>
-                        <div class="font-bold border-l-2 border-white/20 pl-4">SaaS Products & Dashboards</div>
-<div class="font-bold border-l-2 border-white/20 pl-4">E-commerce Solutions</div>
-                    </div>
-                </div>
-
-                <div class="p-12 rounded-[3.5rem] bg-white/5 border border-white/10">
-                    <h4 class="tag mb-8 text-blue-400">Tools & Tech Stack</h4>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">Jira</span>
-                        <span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">ClickUp</span>
-<span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">GitHub</span>
-                        <span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">TestRail</span>
-<span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">Testmo</span>
-                        <span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">Postman (API Testing)</span>
-<span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">Apache JMeter (Performance Testing)</span>
-                        <span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">Chrome DevTools</span>
-                        <span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">SQL (Data & BI Validation)</span>
-<span class="px-5 py-3 bg-white/5 rounded-2xl text-xs font-mono font-bold hover:bg-white/10 transition">Agile / Scrum / Kanban</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="work" class="py-32 max-w-7xl mx-auto px-10">
-        <div class="flex justify-between items-end mb-16">
-            <h2 class="text-6xl font-black tracking-tighter italic">Global Portfolio</h2>
-            <div class="text-right hidden md:block">
-                <p class="text-slate-400 font-bold mb-2 uppercase text-[10px] tracking-widest">Selected Works</p>
-                <div class="h-1 w-24 bg-blue-600 ml-auto rounded-full"></div>
-            </div>
+          </div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="premium-card bg-white p-10 rounded-[3.5rem]">
-                <div class="flex justify-between mb-8">
-                    <span class="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase">Senior QA Engineer</span>
-                    <span class="text-slate-300 font-mono text-xs">US Market</span>
-                </div>
-                <h3 class="text-3xl font-extrabold mb-4 italic text-slate-800 tracking-tighter">LegalAtoms – Legal Services SaaS Platform</h3>
-                <p class="text-slate-500 mb-8 text-sm leading-relaxed">Led end-to-end QA for LegalAtoms.com, a US legal SaaS platform. Managed test strategy, regression, usability, and release validation. Helped deliver stable production releases and significantly reduced critical bugs through long-term testing engagement.</p>
-                <div class="flex gap-2"><span class="tag bg-slate-100 px-3 py-1 rounded">SAAS</span><span class="tag bg-slate-100 px-3 py-1 rounded">WEB APP</span><span class="tag bg-slate-100 px-3 py-1 rounded">LegalTech</span></div>
+        <div class="proj-card reveal">
+          <div class="proj-card-top">
+            <div class="proj-num">02</div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-role">QA Lead &amp; Development Manager</div>
+            <span class="mkt-badge">UK Market</span>
+            <h3>5Loyalty – Loyalty-Based SaaS Platform for Restaurants and Cafes</h3>
+            <p>Led QA strategy and coordinated development tasks for a SaaS loyalty platform. Managed QA teams, oversaw testing cycles, prioritized backlogs and ensured stable, high-quality releases across web and mobile apps.</p>
+            <div class="proj-tags">
+              <span class="ptag">Web App</span>
+              <span class="ptag">SaaS</span>
+              <span class="ptag">Mobile App</span>
+              <span class="ptag">Loyalty Rewards</span>
+              <span class="ptag">QR Code Integration</span>
+              <span class="ptag">POS Integration</span>
             </div>
-
-            <div class="premium-card bg-slate-50 p-10 rounded-[3.5rem] border-blue-100 bg-gradient-to-br from-white to-blue-50">
-                <div class="flex justify-between mb-8">
-                    <span class="bg-orange-100 text-orange-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase">QA Lead & Development Manager</span>
-                    <span class="text-slate-300 font-mono text-xs">UK Market</span>
-                </div>
-                <h3 class="text-3xl font-extrabold mb-4 italic text-slate-800 tracking-tighter">5Loyalty – Loyalty-Based SaaS Platform for Restaurants & Cafes</h3>
-                <p class="text-slate-500 mb-8 text-sm leading-relaxed">Led QA strategy and coordinated development tasks for a SaaS loyalty platform. Managed QA teams, oversaw testing cycles, prioritized backlogs and ensured stable, high-quality releases across web and mobile apps.</p>
-                <div class="flex gap-2"><span class="tag bg-white border border-slate-200 px-3 py-1 rounded">Web app</span><span class="tag bg-white border border-slate-200 px-3 py-1 rounded">saas</span><span class="tag bg-white border border-slate-200 px-3 py-1 rounded">Mobile app</span></div>
-            </div>
-
-            <div class="premium-card bg-white p-10 rounded-[3.5rem]">
-                <div class="flex justify-between mb-8"> 
-                    <span class="bg-emerald-50 text-emerald-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase">QA Engineer – BI & Analytics</span>
-                    <span class="text-slate-300 font-mono text-xs">UK & US markets</span>
-                </div>
-                <h3 class="text-3xl font-extrabold mb-4 italic text-slate-800 tracking-tighter">Business Intelligence & Data Analytics – QA Testing</h3>
-                <p class="text-slate-500 mb-8 text-sm leading-relaxed">Delivered QA services for enterprise BI and analytics platforms across multiple freelance projects. Tested Power BI and Metabase dashboards, validated ETL pipelines, KPIs and data accuracy to ensure reliable analytics and decision-ready insights for business teams.</p>
-                <div class="flex gap-2"><span class="tag bg-slate-100 px-3 py-1 rounded">BI Testing</span><span class="tag bg-slate-100 px-3 py-1 rounded">Data Analytics</span><span class="tag bg-slate-100 px-3 py-1 rounded">SaaS QA</span></div>
-            </div>
+          </div>
         </div>
-    </section>
 
-    <section id="packages" class="py-24 px-10 bg-slate-950 rounded-[4rem] mx-4 text-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h3 class="text-5xl font-black mb-4 italic">Engagement Models</h3>
-                <p class="text-slate-400">Flexible options tailored for high-growth startups.</p>
+        <div class="proj-card reveal">
+          <div class="proj-card-top">
+            <div class="proj-num">03</div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-role">QA Engineer – BI &amp; Analytics</div>
+            <span class="mkt-badge">EU Market</span>
+            <h3>FinTech SaaS and Financial Analytics – QA Testing</h3>
+            <p>Delivered QA services for a finance and accounting SaaS platform (fincockpit.de), validating AI-driven reporting dashboards and analytics features. Tested comparative monthly, quarterly and weekly reports across multiple locations, ensuring data accuracy, KPI reliability and consistent performance for business decision-making.</p>
+            <div class="proj-tags">
+              <span class="ptag">BI Testing</span>
+              <span class="ptag">Data Analytics</span>
+              <span class="ptag">SaaS QA</span>
+ <span class="ptag">Reporting Systems QA</span>
+ <span class="ptag">FinTech QA</span>
+ <span class="ptag">AI Model Output Testing</span>
             </div>
-            <div class="grid md:grid-cols-3 gap-8 items-stretch">
-                <div class="bg-white/5 p-12 flex flex-col rounded-[3.5rem] border border-white/10 hover:border-blue-500 transition shadow-sm">
-                    <div class="tag text-blue-400 mb-4">DAILY</div>
-                    <div class="text-5xl font-black mb-10">Quick QA Support<br><span class="text-sm font-normal opacity-50">Lightweight, fast-turnaround testing</span></div>
-                    <ul class="text-xs space-y-4 mb-10 opacity-70">
-                        <li class="flex gap-3 text-sm"><span>✔</span> Smoke & Sanity Testing</li>
-                        <li class="flex gap-3 text-sm"><span>✔</span> UI & Functional Coverage</li>
-                        <li class="flex gap-3 text-sm"><span>✔</span> Bug Verification & Retesting</li>
-<li class="flex gap-3 text-sm"><span>✔</span> Rapid Feedback Cycles</li>
-<li class="flex gap-3 text-sm">Best for: Short tasks, hotfixes, urgent releases</li>
-                    </ul>
-                    <a href="mailto:testingpro74@gmail.com" class="block text-center py-5 bg-white text-slate-900 rounded-2xl tag hover:bg-blue-400 hover:text-white transition mt-auto">Inquire Now</a>
-                </div>
+          </div>
+        </div>
 
-                <div class="bg-blue-600 p-12 flex flex-col rounded-[3.5rem] shadow-2xl shadow-blue-500/20 scale-105 z-10 border border-blue-400">
-                    <div class="tag text-white/80 mb-4">Monthly</div>
-                    <div class="text-5xl font-black mb-10">Preferred by SaaS teams<span class="text-sm font-normal opacity-80"> Recommended (Most Popular)</span></div>
-                    <ul class="text-xs space-y-4 mb-10">
-                        <li class="flex gap-3 text-sm"><span>✔</span> Full Regression Suite</li>
-                        <li class="flex gap-3 text-sm"><span>✔</span> API & Mobile Coverage</li>
-                        <li class="flex gap-3 text-sm"><span>✔</span> Test Case Documentation</li>
-                        <li class="flex gap-3 text-sm"><span>✔</span> Performance Bottlenecks</li>
-<li class="flex gap-3 text-sm">Best for: Ongoing SaaS & Product QA</li>
-                    </ul>
-                    <a href="mailto:testingpro74@gmail.com" class="block text-center py-5 bg-white text-blue-600 rounded-2xl tag font-bold shadow-xl">Inquire Now</a>
-                </div>
 
-                <div class="bg-white/5 p-12 flex flex-col rounded-[3.5rem] border border-white/10 hover:border-orange-500 transition shadow-sm">
-                    <div class="tag text-orange-400 mb-4">WEEKLY</div>
-                    <div class="text-5xl font-black mb-10">Flexible QA Coverage<br><span class="text-sm font-normal opacity-50">Balanced support for active sprints</span></div>
-                    <ul class="text-xs space-y-4 mb-10 opacity-70">
-                        <li class="flex gap-3 text-sm"><span>✔</span> Functional & Regression Testing</li>
-                        <li class="flex gap-3 text-sm"><span>✔</span> API & Mobile Coverage</li>
-                        <li class="flex gap-3 text-sm"><span>✔</span> Test Case Updates</li>
-                        <li class="flex gap-3 text-sm"><span>✔</span> Sprint-Level QA Support</li>
-                    </ul>
-                    <a href="mailto:testingpro74@gmail.com" class="block text-center py-5 border border-white/20 rounded-2xl tag hover:bg-white hover:text-slate-900 transition mt-auto">Inquire Now</a>
-                </div>
+ <div class="proj-card reveal">
+          <div class="proj-card-top">
+            <div class="proj-num">04</div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-role">QA Lead &amp; Development Manager</div>
+            <span class="mkt-badge">UK Market</span>
+            <h3>5Loyalty – Loyalty-Based SaaS Platform for Restaurants and Cafes</h3>
+            <p>Led QA strategy and coordinated development tasks for a SaaS loyalty platform. Managed QA teams, oversaw testing cycles, prioritized backlogs and ensured stable, high-quality releases across web and mobile apps.</p>
+            <div class="proj-tags">
+              <span class="ptag">Web App</span>
+              <span class="ptag">SaaS</span>
+              <span class="ptag">Mobile App</span>
+              <span class="ptag">Loyalty Rewards</span>
+              <span class="ptag">QR Code Integration</span>
+              <span class="ptag">POS Integration</span>
             </div>
+          </div>
         </div>
-    </section>
 
-    <footer class="py-20 text-center">
-        <h2 class="text-sm font-black text-slate-400 uppercase tracking-[0.5em] mb-10 italic">M Adnan | QA Engineering</h2>
-        <div class="flex justify-center gap-10 text-xs font-black uppercase tracking-widest mb-10">
-            <a href="https://www.linkedin.com/in/adkhan9161/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition">LinkedIn</a>
-            <a href="https://www.fiverr.com/testingpro1/do-perfect-website-and-mobile-applications-qa-testing" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition">Fiverr</a>
-            <a href="mailto:testingpro74@gmail.com" class="hover:text-blue-600 transition">Email</a>
+
+
+        <!-- ── ADD MORE PROJECTS HERE – just copy a .proj-card block ── -->
+
+      </div>
+    </div>
+
+    <!-- Dot indicators -->
+    <div class="proj-dots" id="projDots"></div>
+    <p class="swipe-hint">← Swipe to browse projects →</p>
+
+  </div>
+</section>
+
+<!-- ─── PACKAGES ─── -->
+<section id="packages">
+  <div class="wrap">
+    <div class="sec-label">Engagement Models</div>
+    <h2 class="sec-title">Flexible Options for High-Growth Teams</h2>
+    <p class="sec-desc">Tailored engagement models for startups and scaling SaaS products.</p>
+
+    <div class="pkg-grid">
+
+      <div class="pkg-card reveal">
+        <div>
+          <div class="pkg-freq">Daily</div>
+          <div class="pkg-name">Quick QA Support</div>
+          <div class="pkg-tag">Lightweight, fast-turnaround testing</div>
         </div>
-        <p class="text-[10px] text-slate-300">© 2026 M Adnan. Quality Assurance Services.</p>
-    </footer>
+        <ul class="pkg-feats">
+          <li><span class="ck">✔</span> Smoke &amp; Sanity Testing</li>
+          <li><span class="ck">✔</span> UI &amp; Functional Coverage</li>
+          <li><span class="ck">✔</span> Bug Verification &amp; Retesting</li>
+          <li><span class="ck">✔</span> Rapid Feedback Cycles</li>
+        </ul>
+        <div class="pkg-note"><strong>Best for:</strong> Short tasks, hotfixes, urgent releases</div>
+        <a href="#contact" class="pkg-btn pkg-btn-o">Inquire Now</a>
+      </div>
 
+      <div class="pkg-card popular reveal">
+        <div class="pop-badge">⭐ Most Popular</div>
+        <div>
+          <div class="pkg-freq">Monthly</div>
+          <div class="pkg-name">Full QA Partnership</div>
+          <div class="pkg-tag">Preferred by SaaS teams</div>
+        </div>
+        <ul class="pkg-feats">
+          <li><span class="ck">✔</span> Full Regression Testing (Monthly Cycles)</li>
+          <li><span class="ck">✔</span> API &amp; Mobile Coverage</li>
+          <li><span class="ck">✔</span> Test Case Creation & Maintenance</li>
+          <li><span class="ck">✔</span> Monthly QA Health Report</li>
+        </ul>
+        <div class="pkg-note"><strong>Best for:</strong> Ongoing SaaS &amp; Product QA</div>
+        <a href="#contact" class="pkg-btn pkg-btn-f">Inquire Now</a>
+      </div>
+
+      <div class="pkg-card reveal">
+        <div>
+          <div class="pkg-freq">Weekly</div>
+          <div class="pkg-name">Flexible QA Coverage</div>
+          <div class="pkg-tag">Balanced support for active sprints</div>
+        </div>
+        <ul class="pkg-feats">
+          <li><span class="ck">✔</span> Functional &amp; Regression Testing</li>
+          <li><span class="ck">✔</span> Bug Reporting & Triage</li>
+          <li><span class="ck">✔</span> Test Case Updates</li>
+          <li><span class="ck">✔</span> Sprint-Level QA Support</li>
+        </ul>
+        <div class="pkg-note"><strong>Best for:</strong> Active sprints &amp; product iterations</div>
+        <a href="#contact" class="pkg-btn pkg-btn-o">Inquire Now</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-label">Service Inquiry</div>
+    <h2 class="sec-title">Ready to Secure Your Next Release?</h2>
+
+    <div class="contact-wrap">
+      <div class="cinfo">
+        <p>Have a specific project in mind or need a long-term QA partner? Drop a message and let's discuss how I can help your team achieve zero-friction quality.</p>
+        <div class="clinks">
+          <a href="https://www.linkedin.com/in/adkhan9161/" target="_blank" class="clink">
+            <span class="clink-icon">in</span>
+            LinkedIn — Connect professionally
+          </a>
+          <a href="https://www.upwork.com/freelancers/testingpro?mp_source=share" target="_blank" class="clink">
+            <span class="clink-icon">★</span>
+            Upwork — View client reviews
+          </a>
+        </div>
+        <div class="tz-block">
+          <div class="tz-label">Timezone Coverage</div>
+          <div class="tz-val">US &nbsp;·&nbsp; UK &nbsp;·&nbsp; EU — Global Remote QA Leadership</div>
+        </div>
+      </div>
+
+      <div class="cform">
+        <!-- Web3Forms -->
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate style="display:flex;flex-direction:column;gap:22px;">
+          <input type="hidden" name="access_key" value="46fb4bf6-c450-4e26-9e17-e53668f524da"/>
+          <input type="hidden" name="subject" value="New QA Service Inquiry — M. Adnan Portfolio"/>
+          <input type="hidden" name="from_name" value="M. Adnan QA Portfolio"/>
+          <!-- Honeypot spam protection -->
+          <input type="checkbox" name="botcheck" style="display:none"/>
+
+          <div class="frow">
+            <div class="fg">
+              <label for="cf-name">Name</label>
+              <input id="cf-name" type="text" name="name" placeholder="Your name" required/>
+            </div>
+            <div class="fg">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" type="email" name="email" placeholder="you@company.com" required/>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="cf-company">Company / Project</label>
+            <input id="cf-company" type="text" name="company" placeholder="Company or project name"/>
+          </div>
+          <div class="fg">
+            <label for="cf-engagement">Engagement Type</label>
+            <select id="cf-engagement" name="engagement">
+              <option value="">Select engagement model</option>
+              <option>Daily – Quick QA Support</option>
+              <option>Weekly – Flexible QA Coverage</option>
+              <option>Monthly – Full QA Partnership</option>
+              <option>Custom Arrangement</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Tell me about your project, tech stack and QA needs…" required></textarea>
+          </div>
+
+          <!-- Success message -->
+          <div id="cf-success" style="display:none; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.35); border-radius:10px; padding:16px 20px; color:#4ade80; font-size:0.9rem; font-weight:600;">
+            ✅ Message sent! I'll get back to you within 24 hours.
+          </div>
+          <!-- Error message -->
+          <div id="cf-error" style="display:none; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:10px; padding:16px 20px; color:#f87171; font-size:0.9rem; font-weight:600;">
+            ❌ Something went wrong. Please try again or reach out via LinkedIn.
+          </div>
+
+          <button class="fsub" type="submit" id="cf-submit">Submit Request →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-copy">© 2026 M Adnan · Quality Assurance Services</div>
+    <div class="foot-links">
+      <a href="https://www.linkedin.com/in/adkhan9161/" target="_blank">LinkedIn</a>
+      <a href="https://www.upwork.com/freelancers/testingpro?mp_source=share" target="_blank">Upwork</a>
+      <a href="#hero">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Burger
+  const burger  = document.getElementById('burger');
+  const mobMenu = document.getElementById('mobMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobMenu.classList.toggle('open');
+  });
+  function closeMob() {
+    burger.classList.remove('open');
+    mobMenu.classList.remove('open');
+  }
+
+  // Scroll reveal
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), (i % 3) * 90);
+        ro.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  // ── Portfolio Carousel — 1 card at a time ──────────────
+  (function initCarousel() {
+    const track   = document.getElementById('projTrack');
+    const dotsWrap= document.getElementById('projDots');
+    const btnPrev = document.getElementById('carPrev');
+    const btnNext = document.getElementById('carNext');
+    const elCur   = document.getElementById('carCurrent');
+    const elTotal = document.getElementById('carTotal');
+    const cards   = Array.from(track.querySelectorAll('.proj-card'));
+    const total   = cards.length;
+    let current   = 0;
+
+    elTotal.textContent = total;
+
+    // Build dot indicators
+    cards.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'proj-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to project ' + (i + 1));
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    });
+
+    function getDots() { return Array.from(dotsWrap.querySelectorAll('.proj-dot')); }
+
+    function goTo(idx) {
+      current = Math.max(0, Math.min(idx, total - 1));
+      // Slide the track: move by exactly 100% * index
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      elCur.textContent = current + 1;
+      btnPrev.disabled = current === 0;
+      btnNext.disabled = current === total - 1;
+      getDots().forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    btnPrev.addEventListener('click', () => goTo(current - 1));
+    btnNext.addEventListener('click', () => goTo(current + 1));
+
+    // Touch / swipe support
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend',   e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) diff > 0 ? goTo(current + 1) : goTo(current - 1);
+    });
+
+    // Keyboard arrow support when section is in view
+    document.addEventListener('keydown', e => {
+      const wrap = document.getElementById('work');
+      const r = wrap.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        if (e.key === 'ArrowRight') goTo(current + 1);
+        if (e.key === 'ArrowLeft')  goTo(current - 1);
+      }
+    });
+
+    goTo(0); // init
+  })();
+
+  // ── Web3Forms contact submission ──────────────────────────
+  const contactForm = document.getElementById('contactForm');
+  const cfSubmit    = document.getElementById('cf-submit');
+  const cfSuccess   = document.getElementById('cf-success');
+  const cfError     = document.getElementById('cf-error');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Hide previous messages
+      cfSuccess.style.display = 'none';
+      cfError.style.display   = 'none';
+
+      // Basic client-side validation
+      const name    = contactForm.querySelector('[name="name"]').value.trim();
+      const email   = contactForm.querySelector('[name="email"]').value.trim();
+      const message = contactForm.querySelector('[name="message"]').value.trim();
+      if (!name || !email || !message) {
+        cfError.textContent = '❌ Please fill in Name, Email and Message.';
+        cfError.style.display = 'block';
+        return;
+      }
+
+      // Loading state
+      cfSubmit.disabled     = true;
+      cfSubmit.textContent  = 'Sending…';
+
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          cfSuccess.style.display = 'block';
+          contactForm.reset();
+          setTimeout(() => { cfSuccess.style.display = 'none'; }, 5000);
+        } else {
+          cfError.textContent = '❌ ' + (result.message || 'Something went wrong. Please try again.');
+          cfError.style.display = 'block';
+        }
+      } catch (err) {
+        cfError.style.display = 'block';
+      } finally {
+        cfSubmit.disabled    = false;
+        cfSubmit.textContent = 'Submit Request →';
+      }
+    });
+  }
+
+  // Nav active
+  const secs = document.querySelectorAll('section[id]');
+  const nls  = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 110) cur = s.id; });
+    nls.forEach(a => {
+      if (!a.classList.contains('nav-cta'))
+        a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--amber)' : '';
+    });
+  });
+</script>
 </body>
 </html>
